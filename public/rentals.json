@@ -1,0 +1,160 @@
+{
+  "rentals": [
+    {
+      "id": "1",
+      "title": "Wireless Lightweight Keyboard",
+      "type": "Tech & Gadgets",
+      "description": "A compact and lightweight wireless keyboard with ergonomic design, ideal for work or gaming on the go.",
+      "price": "₱59 for 24 Hours",
+      "image": "/products_img/2.png",
+      "company": {
+        "name": "Rent My Gear 2600",
+        "description": "Your go-to rental shop for quality tech and lifestyle products."
+      }
+    },
+    {
+      "id": "2",
+      "title": "Anya Kids Cosplay Set",
+      "type": "Costumes",
+      "description": "A cute and complete cosplay set for kids, inspired by the popular anime character Anya Forger.",
+      "price": "₱120 for 24 Hours",
+      "image": "/products_img/3.png",
+      "company": {
+        "name": "Rent My Gear 2600",
+        "description": "Your go-to rental shop for quality tech and lifestyle products."
+      }
+    },
+    {
+      "id": "3",
+      "title": "Thomson Electric Guitar and Amplifier",
+      "type": "Musical Instruments",
+      "description": "A high-quality electric guitar with an amplifier, perfect for music gigs, practice, and performances.",
+      "price": "₱300 for 24 Hours",
+      "image": "/products_img/4.png",
+      "company": {
+        "name": "Rent My Gear 2600",
+        "description": "Your go-to rental shop for quality tech and lifestyle products."
+      }
+    },
+    {
+      "id": "4",
+      "title": "Cat Paw Hair Waver",
+      "type": "Beauty",
+      "description": "A trendy hair waver with a cute cat paw design, perfect for achieving salon-quality curls at home.",
+      "price": "₱59 for 24 Hours",
+      "image": "/products_img/5.png",
+      "company": {
+        "name": "Rent My Gear 2600",
+        "description": "Your go-to rental shop for quality tech and lifestyle products."
+      }
+    },
+    {
+      "id": "5",
+      "title": "M8 Wireless Video Game Console",
+      "type": "Gaming & Entertainment",
+      "description": "A portable gaming console pre-loaded with classic games, perfect for casual gaming sessions.",
+      "price": "₱120 for 24 Hours",
+      "image": "/products_img/6.png",
+      "company": {
+        "name": "Rent My Gear 2600",
+        "description": "Your go-to rental shop for quality tech and lifestyle products."
+      }
+    },
+    {
+      "id": "6",
+      "title": "Red Hair Wig",
+      "type": "Costumes",
+      "description": "A vibrant red wig made from high-quality synthetic fibers, ideal for cosplay or themed parties.",
+      "price": "₱59 for 24 Hours",
+      "image": "/products_img/7.png",
+      "company": {
+        "name": "Rent My Gear 2600",
+        "description": "Your go-to rental shop for quality tech and lifestyle products."
+      }
+    },
+    {
+      "id": "7",
+      "title": "5 in 1 Hair Dryer Styler",
+      "type": "Beauty",
+      "description": "A versatile hair styling tool with five interchangeable heads for drying, curling, and straightening.",
+      "price": "₱120 for 24 Hours",
+      "image": "/products_img/8.png",
+      "company": {
+        "name": "Rent My Gear 2600",
+        "description": "Your go-to rental shop for quality tech and lifestyle products."
+      }
+    },
+    {
+      "id": "8",
+      "title": "Storage Box",
+      "type": "Home & Logistics",
+      "description": "A spacious and durable storage box, ideal for organizing home or office essentials.",
+      "price": "₱120 for 24 Hours",
+      "image": "/products_img/9.png",
+      "company": {
+        "name": "Rent My Gear 2600",
+        "description": "Your go-to rental shop for quality tech and lifestyle products."
+      }
+    },
+    {
+      "id": "9",
+      "title": "Game Pad Wired Controller",
+      "type": "Gaming & Entertainment",
+      "description": "A high-quality wired game controller compatible with multiple platforms for a smooth gaming experience.",
+      "price": "₱39 for 24 Hours",
+      "image": "/products_img/10.png",
+      "company": {
+        "name": "Rent My Gear 2600",
+        "description": "Your go-to rental shop for quality tech and lifestyle products."
+      }
+    },
+    {
+      "id": "10",
+      "title": "Smart Watch Mi Smart Band 9",
+      "type": "Tech & Gadgets",
+      "description": "A fitness tracker with heart rate monitoring, step tracking, and notification alerts for an active lifestyle.",
+      "price": "₱39 for 24 Hours",
+      "image": "/products_img/11.png",
+      "company": {
+        "name": "Rent My Gear 2600",
+        "description": "Your go-to rental shop for quality tech and lifestyle products."
+      }
+    },
+    {
+      "id": "10",
+      "title": "Aspire A315-55G Laptop",
+      "type": "Tech & Gadgets",
+      "description": "A reliable and high-performance laptop equipped with Intel Core i5 processor, 8GB RAM, and SSD storage—ideal for work and entertainment.",
+      "price": "₱250 for 24 Hours",
+      "image": "/products_img/12.png",
+      "company": {
+        "name": "Rent My Gear 2600",
+        "description": "Your go-to rental shop for quality tech and lifestyle products."
+      }
+    },
+    {
+      "id": "11",
+      "title": "Dell Optiplex 3010 Complete Set",
+      "type": "Tech & Gadgets",
+      "description": "A powerful desktop setup including a Dell Optiplex CPU, monitor, keyboard, and mouse—perfect for office tasks and light gaming.",
+      "price": "₱300 for 24 Hours",
+      "image": "/products_img/13.png",
+      "company": {
+        "name": "Rent My Gear 2600",
+        "description": "Your go-to rental shop for quality tech and lifestyle products."
+      }
+    },
+    {
+      "id": "12",
+      "title": "Picnic Hiking Camping Portable Tent",
+      "type": "Home & Logistics",
+      "description": "A durable and weather-resistant portable tent suitable for camping, picnics, and outdoor adventures.",
+      "price": "₱89 for 24 Hours",
+      "image": "/products_img/14.png",
+      "company": {
+        "name": "Rent My Gear 2600",
+        "description": "Your go-to rental shop for quality tech and lifestyle products."
+      }
+    }
+  ]
+}
