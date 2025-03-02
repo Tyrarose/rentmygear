@@ -161,17 +161,17 @@ const openMessenger = () => {
     <div class="m-auto max-w-2xl pb-24">
       <div class="bg-white px-6 py-8 shadow-md rounded-md m-4 md:m-0">
         <div class="text-center">
-          <h3 class="text-2xl font-semibold mb-4">Ready to Place Request?</h3>
+          <h3 class="text-2xl font-semibold mb-2">Ready to Place Request?</h3>
+          <p class="bg-brand-yellow-transparent p-2 mb-2 rounded text-gray-600 text-sm italic">
+            Copy the message and paste it in the chat.
+          </p>
           <button
             @click="openMessenger"
-            class="bg-blue-500 text-black m-auto rounded-full shadow-lg flex items-center gap-2 px-4 py-2"
+            class="bg-brand-blue text-brand-white m-auto rounded-full shadow-lg flex items-center gap-2 px-4 py-2"
           >
-            <img src="/messenger-icon.svg" alt="Messenger" class="w-10 h-10" />
+            <img src="/messenger-white.svg" alt="Messenger" class="w-8" />
             Chat with us
           </button>
-          <p class="bg-brand-yellow-transparent p-3 rounded text-gray-600 text-sm mt-2 italic">
-            Open Messenger and paste the copied message in the chat.
-          </p>
         </div>
       </div>
     </div>
