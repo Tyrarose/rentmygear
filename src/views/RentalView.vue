@@ -1,6 +1,6 @@
 <script setup>
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
-import { reactive, onMounted } from 'vue';
+import { reactive, onMounted, ref } from 'vue';
 import { useRoute, RouterLink, useRouter } from 'vue-router';
 import BackButton from '@/components/BackButton.vue';
 import { useToast } from 'vue-toastification';
@@ -23,7 +23,27 @@ const deleteRental = async () => {
   }
 };
 
+const isMobile = ref(false);
+
+const openMessenger = () => {
+  const pageId = import.meta.env.VITE_MESSENGER_PAGE_ID;
+  if (!pageId) {
+    console.error("Messenger Page ID is missing in environment variables.");
+    return;
+  }
+
+  const messengerLink = `https://m.me/${pageId}`;
+
+  if (isMobile.value) {
+    window.location.href = `fb://messaging/${pageId}`;
+  } else {
+    window.open(messengerLink, "_blank");
+  }
+};
+
 onMounted(async () => {
+  isMobile.value = /Mobi|Android/i.test(navigator.userAgent);
+
   try {
     const response = await fetch('/rentals.json');
     const data = await response.json();
@@ -36,8 +56,9 @@ onMounted(async () => {
 });
 </script>
 
+
 <template>
-  <BackButton/>
+  <BackButton />
   <section v-if="!state.isLoading" class="bg-blue-eight">
     <div class="container m-auto py-10 px-6">
       <div class="grid grid-cols-1 md:grid-cols-70/30 w-full gap-6">
@@ -80,23 +101,31 @@ onMounted(async () => {
             <h3 class="text-xl font-bold mb-6">Renter Info</h3>
             <h2 class="text-2xl">{{ state.rental.company?.name }}</h2>
             <p class="my-2">{{ state.rental.company?.description }}</p>
-
-            <hr class="my-4" />
-
-            <h3 class="mb-3 text-xl">Message Us</h3>
-            <a :href="state.rental.company?.facebookLink" target="_blank" class="my-4 bg-blue-eight p-2 font-bold">
-              {{ state.rental.company?.facebookLink }}
-            </a>
-
-            <h3 class="mt-6 text-xl">Call Us:</h3>
-            <p class="my-2 bg-blue-eight p-2 font-bold">{{ state.rental.company?.contactPhone }}</p>
+            <button
+              @click="openMessenger"
+              class="bg-blue-500 text-black px-4 py-2 rounded-full shadow-lg flex items-center gap-2"
+            >
+              <img src="/messenger-icon.svg" alt="Messenger" class="w-10 h-10" />
+              Chat with us
+            </button>
           </div>
         </aside>
       </div>
     </div>
   </section>
-  
+
   <div v-else class="text-center text-gray-500 py-6">
-    <PulseLoader/>
+    <PulseLoader />
   </div>
 </template>
+
+
+
+<style scoped>
+button {
+  transition: transform 0.3s ease-in-out;
+}
+button:hover {
+  transform: scale(1.1);
+}
+</style>

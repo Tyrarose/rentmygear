@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, computed, onMounted } from 'vue';
+import { reactive, computed, onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { useToast } from 'vue-toastification';
 import BackButton from '@/components/BackButton.vue';
@@ -17,22 +17,27 @@ const state = reactive({
   rental: {},
 });
 
-const rentalId = computed(() => route.params.id); 
+const rentalId = computed(() => route.params.id);
 
 const fetchRentalItem = async () => {
   try {
     const response = await fetch('/rentals.json'); 
-    const rentals = await response.json();
-    state.rental = rentals.find(rental => rental.id === rentalId.value) || {};
+    const data = await response.json(); // `data` is the full object containing `rentals`
+
+    console.log('Fetched data:', data); // Debugging line to inspect structure
+
+    // Access the `rentals` array and find the matching item
+    state.rental = data.rentals.find(rental => rental.id === rentalId.value) || {};
   } catch (error) {
     console.error('Error fetching rental item:', error);
   }
 };
 
-onMounted(fetchRentalItem); 
+
+onMounted(fetchRentalItem);
 
 const rentalRequestMessage = computed(() => {
-  return `Hello RentMyGear2600, my name is <strong>${form.renterName}</strong> and I want to request to rent <strong>${state.rental.title || 'an item'}</strong>. I am from <strong>${form.renterLocation}</strong> and my phone number is <strong>${form.renterPhone}</strong>.`; 
+  return `Hello RentMyGear2600, my name is <strong>${form.renterName}</strong> and I want to request to rent <strong>${state.rental.title || 'an item'}</strong>. I am from <strong>${form.renterLocation}</strong> and my phone number is <strong>${form.renterPhone}</strong>.`;
 });
 
 const handleCopyToClipboard = () => {
@@ -48,16 +53,33 @@ const handleCopyToClipboard = () => {
   });
 };
 
-const openMessengerChat = () => {
-  const facebookPageId = 'tyrarosie';
-  const messengerUrl = `https://m.me/${facebookPageId}`;
-  window.open(messengerUrl, '_blank');
+// Detect if the user is on mobile
+const isMobile = ref(false);
+
+onMounted(() => {
+  isMobile.value = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+});
+
+const openMessenger = () => {
+  const pageId = import.meta.env.VITE_MESSENGER_PAGE_ID;
+  if (!pageId) {
+    console.error("Messenger Page ID is missing in environment variables.");
+    return;
+  }
+
+  const messengerLink = `https://m.me/${pageId}`;
+
+  if (isMobile.value) {
+    window.location.href = `fb://messaging/${pageId}`;
+  } else {
+    window.open(messengerLink, "_blank");
+  }
 };
+
 </script>
 
-
 <template>
-  <BackButton/>
+  <BackButton />
   <section class="bg-blue-eight">
     <div class="container m-auto max-w-2xl pt-24">
       <div class="bg-white px-6 py-8 mb-4 shadow-md rounded-md m-4 md:m-0">
@@ -123,37 +145,35 @@ const openMessengerChat = () => {
       </div>
       <div class="flex justify-center mt-6">
         <svg
-            class="w-10 h-10 text-brand-blue animate-bounce"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+          class="w-10 h-10 text-brand-blue animate-bounce"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
         >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
         </svg>
+      </div>
     </div>
-    </div>
-    
-
-
   </section>
+
   <section class="bg-blue-eight">
     <div class="m-auto max-w-2xl pb-24">
       <div class="bg-white px-6 py-8 shadow-md rounded-md m-4 md:m-0">
         <div class="text-center">
-            <h3 class="text-2xl font-semibold mb-4">Ready to Place Request?</h3>
-            <button
-            @click="openMessengerChat"
-            class="bg-brand-blue text-brand-white font-bold py-3 px-9 rounded-full focus:outline-none focus:shadow-outline"
-            >
-            Open Messenger Chat
-            </button>
-            <p class="bg-brand-yellow-transparent p-3 rounded text-gray-600 text-sm mt-2 italic">
+          <h3 class="text-2xl font-semibold mb-4">Ready to Place Request?</h3>
+          <button
+            @click="openMessenger"
+            class="bg-blue-500 text-black m-auto rounded-full shadow-lg flex items-center gap-2 px-4 py-2"
+          >
+            <img src="/messenger-icon.svg" alt="Messenger" class="w-10 h-10" />
+            Chat with us
+          </button>
+          <p class="bg-brand-yellow-transparent p-3 rounded text-gray-600 text-sm mt-2 italic">
             Open Messenger and paste the copied message in the chat.
-            </p>
-
+          </p>
         </div>
-        </div>
+      </div>
     </div>
   </section>
 </template>
