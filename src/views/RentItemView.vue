@@ -17,12 +17,11 @@ const state = reactive({
   rental: {},
 });
 
-const rentalId = computed(() => route.params.id); // Extract rental ID from route
+const rentalId = computed(() => route.params.id); 
 
-// Fetch rental details from a local JSON file
 const fetchRentalItem = async () => {
   try {
-    const response = await fetch('/rentals.json'); // Load local JSON file
+    const response = await fetch('/rentals.json'); 
     const rentals = await response.json();
     state.rental = rentals.find(rental => rental.id === rentalId.value) || {};
   } catch (error) {
@@ -30,7 +29,7 @@ const fetchRentalItem = async () => {
   }
 };
 
-onMounted(fetchRentalItem); // Load rental details when component mounts
+onMounted(fetchRentalItem); 
 
 const rentalRequestMessage = computed(() => {
   return `Hello RentMyGear2600, my name is <strong>${form.renterName}</strong> and I want to request to rent <strong>${state.rental.title || 'an item'}</strong>. I am from <strong>${form.renterLocation}</strong> and my phone number is <strong>${form.renterPhone}</strong>.`; 
@@ -50,7 +49,7 @@ const handleCopyToClipboard = () => {
 };
 
 const openMessengerChat = () => {
-  const facebookPageId = 'tyrarosie'; // Replace with your Facebook Page ID or username
+  const facebookPageId = 'tyrarosie';
   const messengerUrl = `https://m.me/${facebookPageId}`;
   window.open(messengerUrl, '_blank');
 };
@@ -114,7 +113,6 @@ const openMessengerChat = () => {
             <h4 class="bg-brand-yellow-transparent p-3 rounded text-black-seven italic" v-html="rentalRequestMessage"></h4>
           </div>
 
-          <!-- Copy to Clipboard Button -->
           <button
             class="bg-brand-blue text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
             type="submit"

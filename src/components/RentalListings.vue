@@ -40,17 +40,14 @@ onMounted(async () => {
         Browse Rentals
       </h2>
 
-      <!-- Show loading spinner while data is loading -->
       <div v-if="state.isLoading" class="text-center text-gray-500 py-6">
         <PulseLoader />
       </div>
 
-      <!-- Show error message if fetching failed -->
       <div v-else-if="state.error" class="text-center text-red-500 py-6">
         {{ state.error }}
       </div>
 
-      <!-- Display rentals -->
       <div v-else class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <RentalListing
           v-for="rental in state.rentals.slice(0, limit || state.rentals.length)"

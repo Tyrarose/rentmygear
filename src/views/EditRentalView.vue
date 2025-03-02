@@ -38,24 +38,20 @@ const handleSubmit = async () => {
     }
   };
 
-  // Load existing rentals from local storage
   let rentals = JSON.parse(localStorage.getItem('rentals')) || [];
 
-  // Find the index of the rental to update
   const index = rentals.findIndex(r => r.id === rentalId);
   if (index !== -1) {
-    rentals[index] = updatedRental; // Update rental
+    rentals[index] = updatedRental; 
   } else {
-    rentals.push(updatedRental); // If not found, add new (optional)
+    rentals.push(updatedRental); 
   }
 
-  // Save updated rentals back to local storage
   localStorage.setItem('rentals', JSON.stringify(rentals));
 
   toast.success('Rental Updated Successfully');
   router.push(`/rentals/${rentalId}`);
 };
-
 
 onMounted(async () => {
   try {

@@ -5,7 +5,7 @@ import { RouterLink, useRoute } from 'vue-router';
 const isActiveLink = (routePath) => {
   const route = useRoute();
   return route.path === routePath;
-  
+
 }
 </script>
 
@@ -28,9 +28,9 @@ const isActiveLink = (routePath) => {
                 <RouterLink
                     to="/"
                     :class="[
-                        isActiveLink('/') ? 'border' // Active
-                        : '','text-brand-white', 'px-3', 'py-2', 'rounded-md', // Static
-                        'hover:bg-brand-white hover:text-brand-blue'              // Hover
+                        isActiveLink('/') ? 'border' 
+                        : '','text-brand-white', 'px-3', 'py-2', 'rounded-md', 
+                        'hover:bg-brand-white hover:text-brand-blue'              
                     ]"
                 >
                     Home
@@ -38,21 +38,12 @@ const isActiveLink = (routePath) => {
                 <RouterLink
                   to="/rentals"
                   :class="[
-                        isActiveLink('/rentals') ? 'border' // Active
-                        : '','text-brand-white', 'px-3', 'py-2', 'rounded-md', // Static
-                        'hover:bg-brand-white hover:text-brand-blue'              // Hover
+                        isActiveLink('/rentals') ? 'border' 
+                        : '','text-brand-white', 'px-3', 'py-2', 'rounded-md', 
+                        'hover:bg-brand-white hover:text-brand-blue'              
                     ]"
                   >Rentals</RouterLink
                 >
-                <!-- <RouterLink
-                  to="/rentals/add"
-                  :class="[
-                        isActiveLink('/rentals/add') ? 'border' // Active
-                        : '','text-brand-white', 'px-3', 'py-2', 'rounded-md', // Static
-                        'hover:bg-brand-white hover:text-brand-blue'              // Hover
-                    ]"
-                  >Add Rental</RouterLink
-                > -->
               </div>
             </div>
           </div>

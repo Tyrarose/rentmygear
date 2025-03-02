@@ -38,15 +38,13 @@ const handleSubmit = async () => {
 
   try{
     const response = await axios.post('/api/rentals/', newRental);
-    // @todo - show toast
     toast.success('Rental Added Successfully')
     router.push(`/rentals/${response.data.id}`)
   } catch (error) {
       console.log('Error fetching rental', error);
-      // @todo - show toast
     toast.error('Rental Was Not Added')
   }
-  
+
 }
 
 </script>
