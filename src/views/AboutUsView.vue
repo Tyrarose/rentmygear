@@ -17,7 +17,7 @@
                 </p>
             </div>
             <div>
-                <img src="" alt="Our Mission" class="rounded-lg shadow-lg w-full">
+                <img src="/android-chrome-512x512.png" alt="Our Mission" class="rounded-lg shadow-lg w-full">
             </div>
         </div>
     </section>
