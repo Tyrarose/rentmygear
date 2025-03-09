@@ -1,160 +1,100 @@
 {
-  "rentals": [
+  "Tech & Gadgets": [
     {
-      "id": "1",
       "title": "Wireless Lightweight Keyboard",
-      "type": "Tech & Gadgets",
-      "description": "A compact and lightweight wireless keyboard with ergonomic design, ideal for work or gaming on the go.",
-      "price": "₱59 for 24 Hours",
-      "image": "/products_img/2.png",
-      "company": {
-        "name": "Rent My Gear 2600",
-        "description": "Your go-to rental shop for quality tech and lifestyle products."
-      }
+      "description": "\ud83d\ude80 Work smarter, game better! Rent our ultra-light wireless keyboard for seamless productivity. Why buy when you can rent? \ud83d\udcbc\ud83d\udcbb",
+      "price": "\u20b159 for 24 Hours",
+      "image": "/products_img/2.png"
     },
     {
-      "id": "2",
-      "title": "Anya Kids Cosplay Set",
-      "type": "Costumes",
-      "description": "A cute and complete cosplay set for kids, inspired by the popular anime character Anya Forger.",
-      "price": "₱120 for 24 Hours",
-      "image": "/products_img/3.png",
-      "company": {
-        "name": "Rent My Gear 2600",
-        "description": "Your go-to rental shop for quality tech and lifestyle products."
-      }
-    },
-    {
-      "id": "3",
-      "title": "Thomson Electric Guitar and Amplifier",
-      "type": "Musical Instruments",
-      "description": "A high-quality electric guitar with an amplifier, perfect for music gigs, practice, and performances.",
-      "price": "₱300 for 24 Hours",
-      "image": "/products_img/4.png",
-      "company": {
-        "name": "Rent My Gear 2600",
-        "description": "Your go-to rental shop for quality tech and lifestyle products."
-      }
-    },
-    {
-      "id": "4",
-      "title": "Cat Paw Hair Waver",
-      "type": "Beauty",
-      "description": "A trendy hair waver with a cute cat paw design, perfect for achieving salon-quality curls at home.",
-      "price": "₱59 for 24 Hours",
-      "image": "/products_img/5.png",
-      "company": {
-        "name": "Rent My Gear 2600",
-        "description": "Your go-to rental shop for quality tech and lifestyle products."
-      }
-    },
-    {
-      "id": "5",
-      "title": "M8 Wireless Video Game Console",
-      "type": "Gaming & Entertainment",
-      "description": "A portable gaming console pre-loaded with classic games, perfect for casual gaming sessions.",
-      "price": "₱120 for 24 Hours",
-      "image": "/products_img/6.png",
-      "company": {
-        "name": "Rent My Gear 2600",
-        "description": "Your go-to rental shop for quality tech and lifestyle products."
-      }
-    },
-    {
-      "id": "6",
-      "title": "Red Hair Wig",
-      "type": "Costumes",
-      "description": "A vibrant red wig made from high-quality synthetic fibers, ideal for cosplay or themed parties.",
-      "price": "₱59 for 24 Hours",
-      "image": "/products_img/7.png",
-      "company": {
-        "name": "Rent My Gear 2600",
-        "description": "Your go-to rental shop for quality tech and lifestyle products."
-      }
-    },
-    {
-      "id": "7",
-      "title": "5 in 1 Hair Dryer Styler",
-      "type": "Beauty",
-      "description": "A versatile hair styling tool with five interchangeable heads for drying, curling, and straightening.",
-      "price": "₱120 for 24 Hours",
-      "image": "/products_img/8.png",
-      "company": {
-        "name": "Rent My Gear 2600",
-        "description": "Your go-to rental shop for quality tech and lifestyle products."
-      }
-    },
-    {
-      "id": "8",
-      "title": "Storage Box",
-      "type": "Home & Logistics",
-      "description": "A spacious and durable storage box, ideal for organizing home or office essentials.",
-      "price": "₱120 for 24 Hours",
-      "image": "/products_img/9.png",
-      "company": {
-        "name": "Rent My Gear 2600",
-        "description": "Your go-to rental shop for quality tech and lifestyle products."
-      }
-    },
-    {
-      "id": "9",
-      "title": "Game Pad Wired Controller",
-      "type": "Gaming & Entertainment",
-      "description": "A high-quality wired game controller compatible with multiple platforms for a smooth gaming experience.",
-      "price": "₱39 for 24 Hours",
-      "image": "/products_img/10.png",
-      "company": {
-        "name": "Rent My Gear 2600",
-        "description": "Your go-to rental shop for quality tech and lifestyle products."
-      }
-    },
-    {
-      "id": "10",
       "title": "Smart Watch Mi Smart Band 9",
-      "type": "Tech & Gadgets",
-      "description": "A fitness tracker with heart rate monitoring, step tracking, and notification alerts for an active lifestyle.",
-      "price": "₱39 for 24 Hours",
-      "image": "/products_img/11.png",
-      "company": {
-        "name": "Rent My Gear 2600",
-        "description": "Your go-to rental shop for quality tech and lifestyle products."
-      }
+      "description": "Stay fit & connected without breaking the bank! Try before you buy—rent it today and track your health effortlessly! \u231a\ud83d\udcaa",
+      "price": "\u20b139 for 24 Hours",
+      "image": "/products_img/11.png"
     },
     {
-      "id": "10",
       "title": "Aspire A315-55G Laptop",
-      "type": "Tech & Gadgets",
       "description": "A reliable and high-performance laptop equipped with Intel Core i5 processor, 8GB RAM, and SSD storage—ideal for work and entertainment.",
-      "price": "₱250 for 24 Hours",
-      "image": "/products_img/12.png",
-      "company": {
-        "name": "Rent My Gear 2600",
-        "description": "Your go-to rental shop for quality tech and lifestyle products."
-      }
+      "price": "\u20b1250 for 24 Hours",
+      "image": "/products_img/12.png"
     },
     {
-      "id": "11",
       "title": "Dell Optiplex 3010 Complete Set",
-      "type": "Tech & Gadgets",
       "description": "A powerful desktop setup including a Dell Optiplex CPU, monitor, keyboard, and mouse—perfect for office tasks and light gaming.",
-      "price": "₱300 for 24 Hours",
-      "image": "/products_img/13.png",
-      "company": {
-        "name": "Rent My Gear 2600",
-        "description": "Your go-to rental shop for quality tech and lifestyle products."
-      }
+      "price": "\u20b1300 for 24 Hours",
+      "image": "/products_img/13.png"
+    }
+  ],
+  "Gaming & Entertainment": [
+    {
+      "title": "M8 Wireless Video Game Console",
+      "description": "Nostalgic for retro games? Relive childhood memories without buying another gadget! Rent it today! \ud83d\udd79\ufe0f\ud83d\udc7e",
+      "price": "\u20b1120 for 24 Hours",
+      "image": "/products_img/6.png"
     },
     {
-      "id": "12",
+      "title": "Game Pad Wired Controller",
+      "description": "Gaming is better with the right controller! Why buy when you can rent? Play like a pro today! \ud83c\udfae\ud83d\udd25",
+      "price": "\u20b139 for 24 Hours",
+      "image": "/products_img/10.png"
+    }
+  ],
+  "Beauty": [
+    {
+      "title": "Cat Paw Hair Waver",
+      "description": "Want effortless waves without spending on an expensive tool? Try it first—rent it now! \ud83d\udc3e\ud83d\udc81\u200d♀️",
+      "price": "\u20b159 for 24 Hours",
+      "image": "/products_img/5.png"
+    },
+    {
+      "title": "5 in 1 Hair Dryer Styler",
+      "description": "One tool, endless styles! Get salon-quality hair at home for just \u20b1120! Why commit to buying when you can rent? ✨\ud83c\udf80",
+      "price": "\u20b1120 for 24 Hours",
+      "image": "/products_img/8.png"
+    }
+  ],
+  "Costumes": [
+    {
+      "title": "Anya Kids Cosplay Set",
+      "description": "Transform your little one into their favorite anime character without overspending! Rent now! \ud83e\udd70\ud83c\udf80",
+      "price": "\u20b1120 for 24 Hours",
+      "image": "/products_img/3.png"
+    },
+    {
+      "title": "Red Hair Wig",
+      "description": "Perfect for cosplay, events, or a bold new look! Why buy when you can rent for a fraction of the cost? ❤️\ud83d\udd25",
+      "price": "\u20b159 for 24 Hours",
+      "image": "/products_img/7.png"
+    }
+  ],
+  "Home & Logistics": [
+    {
+      "title": "Storage Box",
+      "description": "Declutter your space without permanent storage costs! Rent a spacious storage box today! \ud83c\udfe0\ud83d\udce6",
+      "price": "\u20b1120 for 24 Hours",
+      "image": "/products_img/9.png"
+    },
+    {
       "title": "Picnic Hiking Camping Portable Tent",
-      "type": "Home & Logistics",
-      "description": "A durable and weather-resistant portable tent suitable for camping, picnics, and outdoor adventures.",
-      "price": "₱89 for 24 Hours",
-      "image": "/products_img/14.png",
-      "company": {
-        "name": "Rent My Gear 2600",
-        "description": "Your go-to rental shop for quality tech and lifestyle products."
-      }
+      "description": "Going on an adventure? \ud83c\udf3f\ud83c\udfde️ Rent a tent instead of buying! Save money & space!",
+      "price": "\u20b189 for 24 Hours",
+      "image": "/products_img/14.png"
+    }
+  ],
+  "Musical Instruments": [
+    {
+      "title": "Thomson Electric Guitar and Amplifier",
+      "description": "A high-quality electric guitar with an amplifier, perfect for music gigs, practice, and performances.",
+      "price": "\u20b1300 for 24 Hours",
+      "image": "/products_img/4.png"
+    }
+  ],
+  "Party": [
+    {
+      "title": "Chocolate Fountain Machine",
+      "description": "Make your party extra sweet! \ud83c\udf89\ud83c\udf6b Rent a chocolate fountain & impress your guests without spending a fortune!",
+      "price": "\u20b1180 for 24 Hours",
+      "image": "/products_img/15.png"
     }
   ]
 }

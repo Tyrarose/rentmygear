@@ -1,65 +1,45 @@
 <script setup>
-import { reactive, computed, onMounted, ref } from 'vue';
-import { useRoute } from 'vue-router';
-import { useToast } from 'vue-toastification';
+import { reactive, onMounted, ref } from 'vue';
+import { useRoute, RouterLink, useRouter } from 'vue-router';
 import BackButton from '@/components/BackButton.vue';
+import { useToast } from 'vue-toastification';
 import Footer from '@/components/Footer.vue';
 
 const route = useRoute();
+const router = useRouter();
 const toast = useToast();
-
-const form = reactive({
-  renterName: '',
-  renterLocation: '',
-  renterPhone: '',
-});
-
-const state = reactive({
-  rental: {},
-});
-
-const rentalId = computed(() => route.params.id);
-
-const fetchRentalItem = async () => {
-  try {
-    const response = await fetch('/rentals.json'); 
-    const data = await response.json(); // `data` is the full object containing `rentals`
-
-    console.log('Fetched data:', data); // Debugging line to inspect structure
-
-    // Access the `rentals` array and find the matching item
-    state.rental = data.rentals.find(rental => rental.id === rentalId.value) || {};
-  } catch (error) {
-    console.error('Error fetching rental item:', error);
-  }
-};
-
-
-onMounted(fetchRentalItem);
-
-const rentalRequestMessage = computed(() => {
-  return `Hello RentMyGear2600, my name is <strong>${form.renterName}</strong> and I want to request to rent <strong>${state.rental.title || 'an item'}</strong>. I am from <strong>${form.renterLocation}</strong> and my phone number is <strong>${form.renterPhone}</strong>.`;
-});
-
-const handleCopyToClipboard = () => {
-  if (!form.renterName || !form.renterLocation || !form.renterPhone) {
-    toast.error('Please fill in all fields before submitting.');
-    return;
-  }
-
-  navigator.clipboard.writeText(rentalRequestMessage.value).then(() => {
-    toast.success('Rental request copied to clipboard!');
-  }).catch(() => {
-    toast.error('Failed to copy to clipboard.');
-  });
-};
-
-// Detect if the user is on mobile
 const isMobile = ref(false);
 
-onMounted(() => {
-  isMobile.value = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+const state = reactive({
+  rentals: [],
+  rental: {},
+  isLoading: true,
+  error: null,
 });
+
+onMounted(async () => {
+  isMobile.value = /Mobi|Android/i.test(navigator.userAgent);
+  try {
+    const response = await fetch('/rentals.json');
+    if (!response.ok) throw new Error('Failed to load rentals');
+    const data = await response.json();
+    state.rentals = data.rentals;
+    state.rental = state.rentals.find(rental => rental.title === route.params.title) || {};
+  } catch (error) {
+    state.error = error.message;
+    console.error('Error fetching rentals:', error);
+  } finally {
+    state.isLoading = false;
+  }
+});
+
+const deleteRental = async () => {
+  const confirmDelete = window.confirm('Are you sure you want to delete this rental?');
+  if (confirmDelete) {
+    toast.success('Rental Deleted');
+    router.push('/rentals');
+  }
+};
 
 const openMessenger = () => {
   const pageId = import.meta.env.VITE_MESSENGER_PAGE_ID;
@@ -67,116 +47,65 @@ const openMessenger = () => {
     console.error("Messenger Page ID is missing in environment variables.");
     return;
   }
-
   const messengerLink = `https://m.me/${pageId}`;
-
-  if (isMobile.value) {
-    window.location.href = `fb://messaging/${pageId}`;
-  } else {
-    window.open(messengerLink, "_blank");
-  }
+  window.open(messengerLink, "_blank");
 };
-
 </script>
 
 <template>
   <BackButton />
   <section class="bg-blue-eight">
-    <div class="container m-auto max-w-2xl pt-24">
-      <div class="bg-white px-6 py-8 mb-4 shadow-md rounded-md m-4 md:m-0">
-        <form @submit.prevent="handleCopyToClipboard">
-          <h2 class="text-3xl text-center font-semibold mb-6">Rent an Item</h2>
-
-          <div class="mb-4">
-            <label class="block text-gray-700 font-bold mb-2">
-              Rental Listing Name
-            </label>
-            <h1 class="text-brand-blue text-3xl font-bold mb-4">
-              {{ state.rental.title || 'Loading...' }}
-            </h1>
+    <div class="container m-auto py-10 px-6">
+      <div class="grid grid-cols-1 md:grid-cols-70/30 w-full gap-6">
+        <main>
+          <div class="bg-white p-6 rounded-lg shadow-md flex flex-col md:flex-row items-center md:items-start">
+            <div class="w-full h-full md:w-1/3">
+              <img :src="state.rental.image" :alt="state.rental.title" class="object-contain w-full h-auto rounded-lg" />
+            </div>
+            <div class="w-full md:w-2/3 md:pl-6 text-center md:text-left">
+              <h1 class="text-brand-blue text-3xl font-bold mb-4"> {{ state.rental.title }} </h1>
+            </div>
           </div>
 
-          <h3 class="text-2xl mb-5">Renter Info</h3>
-
-          <div class="mb-4">
-            <label class="block text-gray-700 font-bold mb-2">Renter Name</label>
-            <input
-              v-model="form.renterName"
-              type="text"
-              class="border rounded w-full py-2 px-3"
-              placeholder="Renter Name"
-              required
-            />
+          <div class="bg-white p-6 rounded-lg shadow-md mt-6">
+            <h3 class="text-brand-blue text-lg font-bold mb-6">Category</h3>
+            <div class="text-gray-500 mb-4"> {{ state.rental.type }} </div>
+            <h3 class="text-brand-blue text-lg font-bold mb-6">Rental Description</h3>
+            <p class="mb-4">{{ state.rental.description }}</p>
+            <h3 class="text-brand-blue text-lg font-bold mb-2">Price</h3>
+            <p class="mb-4">{{ state.rental.price }} / Hour</p>
           </div>
 
-          <div class="mb-4">
-            <label class="block text-gray-700 font-bold mb-2">Location</label>
-            <input
-              v-model="form.renterLocation"
-              type="text"
-              class="border rounded w-full py-2 px-3"
-              placeholder="Rental Item Location"
-              required
-            />
+          <RouterLink :to="`/rentals/rentnow/${state.rental.title.replace(/\s+/g, '-').toLowerCase()}`">
+            <button class="mt-6 bg-brand-blue text-brand-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline" type="submit">
+              RENT THIS ITEM
+            </button>
+          </RouterLink>
+        </main>
+
+        <aside>
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-xl font-bold mb-6">Renter Info</h3>
+            <h2 class="text-2xl">{{ state.rental.company?.name }}</h2>
+            <p class="my-2">{{ state.rental.company?.description }}</p>
+            <button @click="openMessenger" class="bg-blue-500 text-black px-4 py-2 rounded-full shadow-lg flex items-center gap-2">
+              <img src="/messenger-icon.svg" alt="Messenger" class="w-10 h-10" />
+              Chat with us
+            </button>
           </div>
-
-          <div class="mb-4">
-            <label class="block text-gray-700 font-bold mb-2">Renter Phone</label>
-            <input
-              v-model="form.renterPhone"
-              type="tel"
-              class="border rounded w-full py-2 px-3"
-              placeholder="Phone number to be contacted"
-              required
-            />
-          </div>
-
-          <div class="mb-4">
-            <label class="block text-gray-700 font-bold mb-2">Rental Request Preview</label>
-            <h4 class="bg-brand-yellow-transparent p-3 rounded text-black-seven italic" v-html="rentalRequestMessage"></h4>
-          </div>
-
-          <button
-            class="bg-brand-blue text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
-            type="submit"
-          >
-            Copy Order to Clipboard
-          </button>
-        </form>
-      </div>
-      <div class="flex justify-center mt-6">
-        <svg
-          class="w-10 h-10 text-brand-blue animate-bounce"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-        </svg>
-      </div>
-    </div>
-  </section>
-
-  <section class="bg-blue-eight">
-    <div class="m-auto max-w-2xl pb-24">
-      <div class="bg-white px-6 py-8 shadow-md rounded-md m-4 md:m-0">
-        <div class="text-center">
-          <h3 class="text-2xl font-semibold mb-2">Ready to Place Request?</h3>
-          <p class="bg-brand-yellow-transparent p-2 mb-2 rounded text-gray-600 text-sm italic">
-            Copy the message and paste it in the chat.
-          </p>
-          <button
-            @click="openMessenger"
-            class="bg-brand-blue text-brand-white m-auto rounded-full shadow-lg flex items-center gap-2 px-4 py-2"
-          >
-            <img src="/messenger-white.svg" alt="Messenger" class="w-8" />
-            Chat with us
-          </button>
-        </div>
+        </aside>
       </div>
     </div>
   </section>
   
   <Footer />
 </template>
+
+<style scoped>
+button {
+  transition: transform 0.3s ease-in-out;
+}
+button:hover {
+  transform: scale(1.1);
+}
+</style>

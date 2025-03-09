@@ -26,7 +26,7 @@ const openMessenger = () => {
 
 <template>
   <section>
-    <div class="container m-auto py-6 px-6">
+    <div class="">
       <button
         @click="openMessenger"
         class="fixed bottom-6 right-6 bg-white text-black px-4 py-2 rounded-full shadow-lg flex items-center gap-2"

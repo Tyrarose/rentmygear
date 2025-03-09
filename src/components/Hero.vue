@@ -1,4 +1,6 @@
 <script setup>
+import AnimatedBackground from '@/components/AnimatedBackground.vue';
+
 defineProps({
     title: {
         type: String,
@@ -8,69 +10,49 @@ defineProps({
         type: String,
         default: 'Find and rent high-quality essentials for your needs, delivered fast.'
     }
-})
-const randomCircleStyle = (index) => {
-    const size = `${Math.floor(Math.random() * 200) + 50}px`; // 50px - 250px
-    const blur = `${Math.floor(Math.random() * 100)}px`; // 0px - 100px
-    const opacity = Math.random() * 0.6 + 0.2; // 0.2 - 0.8
-    const colors = ['#ffc44d', '#fbfcf1', '#4b5ae4'];
-    const color = colors[Math.floor(Math.random() * colors.length)];
-    const top = `${Math.random() * 100}%`;
-    const left = `${Math.random() * 100}%`;
-    const delay = `${Math.random() * 5}s`; // Animation delay variation
-
-    return {
-        width: size,
-        height: size,
-        backgroundColor: color,
-        position: 'absolute',
-        top,
-        left,
-        opacity,
-        filter: `blur(${blur})`,
-        animation: `float ${5 + Math.random() * 5}s infinite ease-in-out`,
-        animationDelay: delay
-    };
-};
+});
 </script>
 
 <template>
-    <section class="relative h-screen flex flex-col justify-center items-center bg-[#4b5ae4] text-white overflow-hidden">
-        <!-- Background Gradient -->
-        <div class="absolute inset-0 bg-gradient-to-br from-[#4b5ae4] via-[#3c4ac6] to-[#2e3bb0] opacity-90"></div>
-
-        <!-- MASSIVE Circle Chaos Begins -->
-        <div v-for="n in 50" :key="n"
-             class="absolute rounded-full"
-             :style="randomCircleStyle(n)"></div>
+    <section class="relative h-screen p-6 sm:p-[80px] flex flex-col justify-center items-center text-white overflow-hidden">
+        <AnimatedBackground />
 
         <!-- Content -->
-        <div class="relative z-10 max-w-3xl text-center">
-            <h1 class="text-6xl font-bold leading-tight drop-shadow-xl">
-                {{ title }}
-            </h1>
-            <p class="text-2xl opacity-90 mt-6">
+        <div class="relative z-10 max-w-3xl text-center px-4">
+            <p class="text-lg sm:text-2xl opacity-90 sm:mt-6">
                 {{ subtitle }}
             </p>
+            <h1 class="text-4xl sm:text-6xl font-bold mt-4  leading-tight drop-shadow-xl">
+                {{ title }}
+            </h1>
 
             <!-- CTA -->
-            <div class="mt-12">
+            <div class="mt-8 sm:mt-12">
                 <RouterLink
                     to="/rentals"
-                    class="px-12 py-5 text-3xl font-semibold bg-[#ffc44d] text-[#4b5ae4] rounded-full shadow-2xl hover:bg-[#fbfcf1] hover:text-[#4b5ae4] transition-all duration-300"
-                    >
-                    Browse Rentals 🚀
+                    class="relative inline-flex items-center justify-center px-8 py-4 sm:px-12 sm:py-5 text-lg sm:text-3xl font-semibold text-brand-blue rounded-full shadow-lg transition-all duration-300
+                    bg-gradient-to-r from-brand-yellow to-brand-orange animate-[gradientAnimation_3s_infinite]
+                    hover:bg-brand-blue hover:text-brand-white
+                    transform hover:scale-105
+                    before:absolute before:inset-0 before:rounded-full before:shadow-[0px_0px_20px_2px_rgba(75,90,228,0.5)] before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300"
+                >
+                    Browse Rentals
                 </RouterLink>
             </div>
         </div>
     </section>
-    
 </template>
+
 
 <style>
 @keyframes float {
     0% { transform: translateY(0px); }
-    50% { transform: translateY(-15px); }
+    50% { transform: translateY(-1000px); }
     100% { transform: translateY(0px); }
+}
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 </style>
