@@ -3,6 +3,7 @@ import { reactive, computed, onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { useToast } from 'vue-toastification';
 import BackButton from '@/components/BackButton.vue';
+import Footer from '@/components/Footer.vue';
 
 const route = useRoute();
 const toast = useToast();
@@ -176,4 +177,6 @@ const openMessenger = () => {
       </div>
     </div>
   </section>
+  
+  <Footer />
 </template>

@@ -4,6 +4,7 @@ import { reactive, onMounted, ref } from 'vue';
 import { useRoute, RouterLink, useRouter } from 'vue-router';
 import BackButton from '@/components/BackButton.vue';
 import { useToast } from 'vue-toastification';
+import Footer from '@/components/Footer.vue';
 
 const route = useRoute();
 const router = useRouter();
@@ -117,6 +118,8 @@ onMounted(async () => {
   <div v-else class="text-center text-gray-500 py-6">
     <PulseLoader />
   </div>
+  
+  <Footer />
 </template>
 
 

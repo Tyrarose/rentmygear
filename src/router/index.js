@@ -8,6 +8,10 @@ import AddRentalView from '@/views/AddRentalView.vue';
 import EditRentalView from '@/views/EditRentalView.vue';
 import RentItemView from '@/views/RentItemView.vue';
 
+import FAQsView from '@/views/FAQSview.vue';
+import AboutUsView from '@/views/AboutUsView.vue';
+
+
 import NotFoundView from '@/views/NotFoundView.vue';
 
 const router = createRouter({
@@ -42,6 +46,16 @@ const router = createRouter({
             path: '/rentals/rentnow/:id',
             name: 'rental-rentnow',
             component: RentItemView,
+        },
+        {
+            path: '/faqs',
+            name: 'faqs',
+            component: FAQsView,
+        },
+        {
+            path: '/about-us',
+            name: 'about-us',
+            component: AboutUsView,
         },
         {
             path: '/:catchAll(.*)',
